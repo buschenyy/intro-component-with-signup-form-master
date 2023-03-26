@@ -19,6 +19,17 @@ const Text = styled.p`
   font-weight: 500;
 `
 
+const Card = styled.div`
+  font-weight: 400;
+  padding: 18px;
+  background: hsl(248, 32%, 49%);
+  border-radius: 10px;
+  box-shadow: 0px 8px 1px 0px #0000001f;
+  > span {
+    font-weight: 600;
+  }
+`
+
 export const Intro = () => {
   return (
     <Container>
@@ -28,6 +39,10 @@ export const Intro = () => {
         scripted tutorials is great, but understanding how developers think is
         invaluable.
       </Text>
+      <Card>
+        <span>Try it free 7 days</span> then
+        <br /> $20/mo. thereafter
+      </Card>
     </Container>
   )
 }
