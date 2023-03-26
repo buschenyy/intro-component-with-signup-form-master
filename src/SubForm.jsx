@@ -34,6 +34,19 @@ const Button = styled.button`
   border: 1px solid #3b916c64;
   box-shadow: rgb(0 0 0 / 9%) 0px -3px 0px 0px inset;
   cursor: pointer;
+
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  transition-duration: 0.3s;
+  transition-property: transform;
+
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(0.9);
+  }
 `
 
 const ErrorMsg = styled.div`
