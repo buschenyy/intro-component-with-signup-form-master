@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import introBg from './assets/bg-intro-mobile.png'
+import { SubForm } from './SubForm'
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -25,9 +26,14 @@ const Card = styled.div`
   background: hsl(248, 32%, 49%);
   border-radius: 10px;
   box-shadow: 0px 8px 1px 0px #0000001f;
+  margin-bottom: 26px;
   > span {
     font-weight: 600;
   }
+`
+const FormContainer = styled(Card)`
+  background: white;
+  padding: 24px;
 `
 
 export const Intro = () => {
@@ -43,6 +49,9 @@ export const Intro = () => {
         <span>Try it free 7 days</span> then
         <br /> $20/mo. thereafter
       </Card>
+      <FormContainer>
+        <SubForm />
+      </FormContainer>
     </Container>
   )
 }
