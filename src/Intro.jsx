@@ -5,20 +5,23 @@ import { SubForm } from './SubForm'
 const Container = styled.div`
   box-sizing: border-box;
   width: 375px;
-  height: 1000px;
   background: url(${introBg}), hsl(0, 100%, 74%);
   font-family: Poppins;
   color: white;
-  padding: 30px;
+  padding: 70px 30px 37px;
 `
 
 const Title = styled.h2`
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 36px;
 `
 
 const Text = styled.p`
-  font-weight: 500;
+  font-weight: 400;
+  margin-bottom: 63px;
+  line-height: 26px;
 `
 
 const Card = styled.div`

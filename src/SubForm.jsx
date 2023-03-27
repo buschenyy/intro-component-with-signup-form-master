@@ -54,7 +54,6 @@ const Form = styled.form`
   }
   > *:not(div) {
     border-radius: 6px;
-    font-weight: 500;
     margin-top: 17px;
   }
 `
@@ -63,14 +62,21 @@ const Input = styled.input`
   padding: 17px;
   background: #ffffff;
   border: 1px solid #dddddd;
+  font-weight: 800;
   &:first-child {
     margin-top: 0;
   }
-  &:focus-visible{
-    outline: rgb(255 122 122 / 42%) solid 2px;
+  &:focus-visible {
+    outline: #dddddd solid 2px;
   }
   &.error {
     animation: ${buzzOutKeyFrame} 0.75s linear 1;
+  }
+  &.redOut {
+    border: rgba(255, 122, 122, 0.5) solid 2px;
+    &::placeholder {
+      color: rgba(255, 122, 122, 0.5);
+    }
   }
 `
 
@@ -79,6 +85,7 @@ const Button = styled.button`
   padding: 16px;
   margin-bottom: 10px;
   font-size: 15px;
+  font-weight: 500;
   color: white;
   background: hsl(154, 59%, 51%);
   border: 1px solid #45a97e63;
@@ -108,7 +115,7 @@ const AgreementInfo = styled.div`
   line-height: 20px;
   > a {
     all: unset;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 10.5px;
     color: hsl(0, 100%, 74%);
     cursor: pointer;
@@ -173,7 +180,9 @@ export const SubForm = () => {
         name="firstName"
         type="text"
         className={
-          formik.touched.lastName && formik.errors.lastName ? errorClass : ''
+          formik.touched.firstName && formik.errors.firstName
+            ? `redOut ${errorClass}`
+            : ''
         }
         placeholder="First Name"
         onChange={formik.handleChange}
@@ -188,7 +197,9 @@ export const SubForm = () => {
         name="lastName"
         type="text"
         className={
-          formik.touched.lastName && formik.errors.lastName ? errorClass : ''
+          formik.touched.lastName && formik.errors.lastName
+            ? `redOut ${errorClass}`
+            : ''
         }
         placeholder="Last Name"
         onChange={formik.handleChange}
@@ -203,7 +214,9 @@ export const SubForm = () => {
         name="email"
         type="email"
         className={
-          formik.touched.email && formik.errors.email ? errorClass : ''
+          formik.touched.email && formik.errors.email
+            ? `redOut ${errorClass}`
+            : ''
         }
         placeholder="Email Address"
         onChange={formik.handleChange}
@@ -218,7 +231,9 @@ export const SubForm = () => {
         name="password"
         type="password"
         className={
-          formik.touched.password && formik.errors.password ? errorClass : ''
+          formik.touched.password && formik.errors.password
+            ? `redOut ${errorClass}`
+            : ''
         }
         placeholder="Password"
         onChange={formik.handleChange}
