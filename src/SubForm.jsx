@@ -66,7 +66,9 @@ const Input = styled.input`
   &:first-child {
     margin-top: 0;
   }
-
+  &:focus-visible{
+    outline: rgb(255 122 122 / 42%) solid 2px;
+  }
   &.error {
     animation: ${buzzOutKeyFrame} 0.75s linear 1;
   }
@@ -143,6 +145,11 @@ const validate = (values) => {
   return errors
 }
 
+const turnErrorAnim = (setState) => {
+  setState('error')
+  setTimeout(() => setState(''), 1000)
+}
+
 export const SubForm = () => {
   const formRef = useRef(null)
   const [errorClass, setErrorClass] = useState('')
@@ -162,7 +169,6 @@ export const SubForm = () => {
 
   return (
     <Form onSubmit={formik.handleSubmit} ref={formRef}>
-      {console.log('render')}
       <Input
         name="firstName"
         type="text"
@@ -226,8 +232,7 @@ export const SubForm = () => {
       <Button
         type="submit"
         onClick={() => {
-          setErrorClass('error')
-          setTimeout(() => setErrorClass(''), 1000)
+          if (!errorClass) turnErrorAnim(setErrorClass)
         }}
       >
         {'Claim your free trial'.toUpperCase()}
