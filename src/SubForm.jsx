@@ -1,5 +1,49 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { useFormik } from 'formik'
+import { useRef, useState } from 'react'
+
+const buzzOutKeyFrame = keyframes`
+  10% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  20% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  30% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  40% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+  50% {
+    -webkit-transform: translateX(2px) rotate(1deg);
+    transform: translateX(2px) rotate(1deg);
+  }
+  60% {
+    -webkit-transform: translateX(-2px) rotate(-1deg);
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  70% {
+    -webkit-transform: translateX(2px) rotate(1deg);
+    transform: translateX(2px) rotate(1deg);
+  }
+  80% {
+    -webkit-transform: translateX(-2px) rotate(-1deg);
+    transform: translateX(-2px) rotate(-1deg);
+  }
+  90% {
+    -webkit-transform: translateX(1px) rotate(0);
+    transform: translateX(1px) rotate(0);
+  }
+  100% {
+    -webkit-transform: translateX(-1px) rotate(0);
+    transform: translateX(-1px) rotate(0);
+  }
+`
 
 const Form = styled.form`
   display: flex;
@@ -22,6 +66,10 @@ const Input = styled.input`
   &:first-child {
     margin-top: 0;
   }
+
+  &.error {
+    animation: ${buzzOutKeyFrame} 0.75s linear 1;
+  }
 `
 
 const Button = styled.button`
@@ -31,21 +79,16 @@ const Button = styled.button`
   font-size: 15px;
   color: white;
   background: hsl(154, 59%, 51%);
-  border: 1px solid #3b916c64;
+  border: 1px solid #45a97e63;
   box-shadow: rgb(0 0 0 / 9%) 0px -3px 0px 0px inset;
   cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
 
-  display: inline-block;
-  vertical-align: middle;
-  transform: perspective(1px) translateZ(0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  transition-duration: 0.3s;
-  transition-property: transform;
-
-  &:hover,
-  &:focus,
   &:active {
     transform: scale(0.9);
+  }
+  &:hover {
+    background: #34bd82;
   }
 `
 
@@ -101,6 +144,9 @@ const validate = (values) => {
 }
 
 export const SubForm = () => {
+  const formRef = useRef(null)
+  const [errorClass, setErrorClass] = useState('')
+
   const formik = useFormik({
     initialValues: {
       firstName: '',
@@ -113,11 +159,16 @@ export const SubForm = () => {
       alert(JSON.stringify(values, null, 2))
     },
   })
+
   return (
-    <Form onSubmit={formik.handleSubmit}>
+    <Form onSubmit={formik.handleSubmit} ref={formRef}>
+      {console.log('render')}
       <Input
         name="firstName"
         type="text"
+        className={
+          formik.touched.lastName && formik.errors.lastName ? errorClass : ''
+        }
         placeholder="First Name"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -130,6 +181,9 @@ export const SubForm = () => {
       <Input
         name="lastName"
         type="text"
+        className={
+          formik.touched.lastName && formik.errors.lastName ? errorClass : ''
+        }
         placeholder="Last Name"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -142,6 +196,9 @@ export const SubForm = () => {
       <Input
         name="email"
         type="email"
+        className={
+          formik.touched.email && formik.errors.email ? errorClass : ''
+        }
         placeholder="Email Address"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -154,6 +211,9 @@ export const SubForm = () => {
       <Input
         name="password"
         type="password"
+        className={
+          formik.touched.password && formik.errors.password ? errorClass : ''
+        }
         placeholder="Password"
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -163,7 +223,15 @@ export const SubForm = () => {
         <ErrorMsg>{formik.errors.password}</ErrorMsg>
       ) : null}
 
-      <Button type="submit">{'Claim your free trial'.toUpperCase()}</Button>
+      <Button
+        type="submit"
+        onClick={() => {
+          setErrorClass('error')
+          setTimeout(() => setErrorClass(''), 1000)
+        }}
+      >
+        {'Claim your free trial'.toUpperCase()}
+      </Button>
       <AgreementInfo>
         By clicking the button, you are agreeing to our{' '}
         <a href="/#">Terms and Services</a>
