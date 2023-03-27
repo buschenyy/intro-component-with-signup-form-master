@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import { ReactComponent as ErrorIcon } from './assets/icon-error.svg'
 import { useFormik } from 'formik'
 import { useRef, useState } from 'react'
 
@@ -102,10 +103,19 @@ const Button = styled.button`
 `
 
 const ErrorMsg = styled.div`
+  position: relative;
   color: red;
   font-style: italic;
   font-size: 11px;
   text-align: end;
+`
+const ErrIcon = styled(ErrorIcon)`
+  position: absolute;
+  top: -41px;
+  right: 15px;
+  &.error {
+    animation: ${buzzOutKeyFrame} 0.75s linear 1;
+  }
 `
 
 const AgreementInfo = styled.div`
@@ -190,7 +200,10 @@ export const SubForm = () => {
         value={formik.values.firstName}
       />
       {formik.touched.firstName && formik.errors.firstName ? (
-        <ErrorMsg>{formik.errors.firstName}</ErrorMsg>
+        <ErrorMsg>
+          {formik.errors.firstName}
+          <ErrIcon className={errorClass} />
+        </ErrorMsg>
       ) : null}
 
       <Input
@@ -207,7 +220,10 @@ export const SubForm = () => {
         value={formik.values.lastName}
       />
       {formik.touched.lastName && formik.errors.lastName ? (
-        <ErrorMsg>{formik.errors.lastName}</ErrorMsg>
+        <ErrorMsg>
+          {formik.errors.lastName}
+          <ErrIcon className={errorClass} />
+        </ErrorMsg>
       ) : null}
 
       <Input
@@ -224,7 +240,10 @@ export const SubForm = () => {
         value={formik.values.email}
       />
       {formik.touched.email && formik.errors.email ? (
-        <ErrorMsg>{formik.errors.email}</ErrorMsg>
+        <ErrorMsg>
+          {formik.errors.email}
+          <ErrIcon className={errorClass} />
+        </ErrorMsg>
       ) : null}
 
       <Input
@@ -241,7 +260,10 @@ export const SubForm = () => {
         value={formik.values.password}
       />
       {formik.touched.password && formik.errors.password ? (
-        <ErrorMsg>{formik.errors.password}</ErrorMsg>
+        <ErrorMsg>
+          {formik.errors.password}
+          <ErrIcon className={errorClass} />
+        </ErrorMsg>
       ) : null}
 
       <Button
