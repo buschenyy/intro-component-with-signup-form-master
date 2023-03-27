@@ -1,18 +1,16 @@
 import styled from 'styled-components'
-import introBg from './assets/bg-intro-mobile.png'
 import { SubForm } from './SubForm'
 
 const Container = styled.div`
   box-sizing: border-box;
   min-width: 375px;
-  background: url(${introBg}), hsl(0, 100%, 74%);
   font-family: Poppins;
   color: white;
   padding: 70px 30px 37px;
-  @media (min-width: 375px) {
+  @media (min-width: 600px) {
     max-width: 1440px;
     min-height: 100vh;
-    padding-inline: 12.083vh;
+    padding-inline: 12.083vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto;
@@ -30,13 +28,12 @@ const Title = styled.h2`
   font-weight: 600;
   font-size: 27px;
   line-height: 36px;
-  @media (min-width: 375px) {
+  @media (min-width: 600px) {
     text-align: start;
     font-weight: 700;
-    line-height: 52px;
-    font-size: 48px;
-    margin-bottom: 15px;
-    transition-delay: 1s;
+    line-height: 3.611vw;
+    font-size: 3.333vw;
+    margin-bottom: 1.042vw;
     grid-row-start: 2;
     grid-row-end: 3;
     grid-column-start: 1;
@@ -49,11 +46,11 @@ const Text = styled.p`
   font-weight: 400;
   margin-bottom: 63px;
   line-height: 26px;
-  @media (min-width: 375px) {
+  @media (min-width: 600px) {
     text-align: start;
-    font-size: 16px;
-    margin-bottom: 106px;
-    transition-delay: 1s;
+    line-height: 1.806vw;
+    font-size: 1.111vw;
+    margin-bottom: 7.361vw;
     grid-row-start: 3;
     grid-row-end: 4;
     grid-column-start: 1;
@@ -72,7 +69,7 @@ const Card = styled.div`
   > span {
     font-weight: 600;
   }
-  @media (min-width: 375px) {
+  @media (min-width: 600px) {
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 2;
@@ -82,8 +79,8 @@ const Card = styled.div`
 const FormContainer = styled(Card)`
   background: white;
   padding: 24px;
-  @media (min-width: 375px) {
-    padding: 40px;
+  @media (min-width: 600px) {
+    padding: 2.778vw;
     margin: 0;
     grid-row-start: 2;
     grid-row-end: 4;
