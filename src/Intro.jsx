@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { SubForm } from './SubForm'
+import { FormComponent as Form } from './Form'
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -103,7 +103,7 @@ export const Intro = () => {
         {window.innerHeight <= 375 ? <br /> : ''}$20/mo. thereafter
       </Card>
       <FormContainer>
-        <SubForm />
+        <Form />
       </FormContainer>
     </Container>
   )

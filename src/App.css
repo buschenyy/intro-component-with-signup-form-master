@@ -6,6 +6,7 @@
 
 body {
   background: url('./assets/bg-intro-mobile.png'), hsl(0, 100%, 74%);
+  margin: 0;
 }
 
 * {

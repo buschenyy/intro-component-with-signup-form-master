@@ -167,7 +167,7 @@ const turnErrorAnim = (setState) => {
   setTimeout(() => setState(''), 1000)
 }
 
-export const SubForm = () => {
+export const FormComponent = () => {
   const formRef = useRef(null)
   const [errorClass, setErrorClass] = useState('')
 
