@@ -99,8 +99,7 @@ export const Intro = () => {
         invaluable.
       </Text>
       <Card>
-        <span>Try it free 7 days</span> then{' '}
-        {window.innerHeight <= 375 ? <br /> : ''}$20/mo. thereafter
+        <span>Try it free 7 days</span> then $20/mo. thereafter
       </Card>
       <FormContainer>
         <Form />
