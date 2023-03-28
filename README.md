@@ -29,7 +29,7 @@ Users should be able to:
 
 ### Screenshot
 
-![page image](./markdown/page-wiew.jpg)
+![page image](./markdown/page-wiew.png)
 
 ### Links
 
